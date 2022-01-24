@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <style>
+        table {
+            border-width: medium;
+            width: auto; /* Ширина таблицы */
+            background: white; /* Цвет фона таблицы */
+            color: black; /* Цвет текста */
+            border-spacing: 1px; /* Расстояние между ячейками */
+        }
+        td, th {
+            background: gray; /* Цвет фона ячеек */
+            padding: 5px; /* Поля вокруг текста */
+        }
+    </style>
+</head>
+<body>
+<table {border="1"}>
+
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>LASTNAME</th>
+        <th>AGE</th>
+    </tr>
+    <div th:each="user:${userList}">
+        <tr>
+            <td th:text="${user.getId()}"/>
+            <td th:text="${user.getName()}"/>
+            <td th:text="${user.getLastName()}"/>
+            <td th:text="${user.getAge()}"/>
+        </tr>
+    </div>
+</table>
+<br/>
+<hr/>
+<form action="page/new.html" target="_blank">
+    <button>linkButton</button>
+    <p><strong>strong text</strong></p>
+    <input name="name_of_field" value="name"/>
+</form>
+</body>
+</html>
