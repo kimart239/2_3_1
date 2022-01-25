@@ -24,26 +24,26 @@ public class UserController {
 
     @GetMapping("/new")
     public String newUser(@ModelAttribute("user") User user) {
-        return "/new";
+        return "new";
     }
 
-    @PostMapping("/new")
+    @PostMapping()
     public String create(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors())
-            return "/new";
+            return "new";
         userService.addUser(user);
         return "redirect:/";
     }
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable("id") int id) {
         model.addAttribute("user", userService.findById(id));
-        return "/edit";
+        return "edit";
     }
 
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, @PathVariable("id") int id) {
         if (bindingResult.hasErrors())
-            return "/edit";
+            return "edit";
 
         userService.update(id, user);
         return "redirect:/";

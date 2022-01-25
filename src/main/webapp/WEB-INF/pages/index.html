@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
@@ -21,26 +21,34 @@
 <table {border="1"}>
 
     <tr>
-        <th>ID</th>
         <th>NAME</th>
         <th>LASTNAME</th>
         <th>AGE</th>
+        <th>ACTION</th>
     </tr>
     <div th:each="user:${userList}">
         <tr>
-            <td th:text="${user.getId()}"/>
             <td th:text="${user.getName()}"/>
             <td th:text="${user.getLastName()}"/>
             <td th:text="${user.getAge()}"/>
+            <td>
+                <form th:action="@{/{id}/edit (id=${user.getId()})}">
+                    <button type="submit" >EDIT</button>
+                </form>
+                <form th:method="DELETE" th:action="@{/{id} (id=${user.getId()})}" >
+                    <button type="submit" >DELETE</button>
+                </form>
+            </td>
+
         </tr>
     </div>
 </table>
 <br/>
 <hr/>
-<form action="page/new.html" target="_blank">
-    <button>linkButton</button>
-    <p><strong>strong text</strong></p>
-    <input name="name_of_field" value="name"/>
+<form th:action="@{/new}">
+    <button type="submit">Create new User</button>
+<!--    <p><strong>strong text</strong></p>-->
+<!--    <input name="name_of_field" value="name"/>-->
 </form>
 </body>
 </html>
