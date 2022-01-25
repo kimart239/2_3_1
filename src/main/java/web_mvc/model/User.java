@@ -1,8 +1,10 @@
 package web_mvc.model;
 
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
 import javax.persistence.*;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -13,12 +15,12 @@ public class User {
     private int id;
 
     @Column
-    @NotNull(message = "not be empty")
+    @NotEmpty(message = "not be empty")
     @Size(min=1, max=45, message = "length 1 to 45 signs")
     private String name;
 
     @Column
-    @NotNull(message = "not be empty")
+    @NotEmpty(message = "not be empty")
     @Size(min=1, max=45, message = "length 1 to 45 signs")
     private String lastName;
 
